@@ -8,6 +8,7 @@ command line and/or C++, or just as a fun and/or educational program.
 ## Features
 * Basic Calculations (Add, Subtract, Multiply, and Divide)
 * Square and Cube Roots
+* Exponents
 * Log Base e and Log Base 10
 * Quadratic Equation Solver
 

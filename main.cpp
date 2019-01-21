@@ -51,8 +51,8 @@ class QuadraticEquation
 int main()
 {
     using namespace std;
-    string version("Project IceForest Calculator C 1.0");
-    string name("Version 1.0");
+    string version("Project IceForest Calculator C 1.1");
+    string name("Version 1.1");
     cout << "\nWelcome to Project IceForest Calculator C!" << endl;
     int mainMenuChoice = 0; //Stores the user's choice of which option in the main menu to execute
     while(1)
@@ -65,6 +65,7 @@ int main()
         {
             case 1: //Add 2 Numbers
             {
+                cout << "\nADDITION:\n";
                 double num1, num2;
                 cout << "Please enter the first number: ";
                 cin >> num1;
@@ -75,6 +76,7 @@ int main()
             }
             case 2: //Subtract 2 Numbers
             {
+                cout << "\nSUBTRACTION:\n";
                 double num1, num2;
                 cout << "Please enter the first number: ";
                 cin >> num1;
@@ -85,6 +87,7 @@ int main()
             }
             case 3: //Multiply 2 Numbers
             {
+                cout << "\nMULTIPLICATION:\n";
                 double num1, num2;
                 cout << "Please enter the first number: ";
                 cin >> num1;
@@ -95,6 +98,7 @@ int main()
             }
             case 4: //Divide 2 Numbers
             {
+                cout << "\nDIVISION:\n";
                 double num1, num2;
                 cout << "Please enter the first number: ";
                 cin >> num1;
@@ -105,6 +109,7 @@ int main()
             }
             case 5: //Square & Cube Roots
             {
+                cout << "\nSQUARE & CUBE ROOTS\n";
                 double input;
                 cout << "Please enter the number: ";
                 cin >> input;
@@ -112,8 +117,20 @@ int main()
                 cout << "Cube Root: " << cbrt(input) << endl;
                 break;
             }
-            case 6: //Logarithms
+            case 6: //Exponents
             {
+                cout <<"\nLOGARITHMS\n";
+                double base, power;
+                cout << "Please enter the base: ";
+                cin >> base;
+                cout << "Please enter the number to raise " << base << " to: ";
+                cin >> power;
+                cout << "Result: " << pow(base, power) << endl;
+                break;
+            }
+            case 7: //Logarithms
+            {
+                cout << "\nLOGARITHMS\n";
                 double input;
                 cout << "Please enter the number: ";
                 cin >> input;
@@ -121,8 +138,9 @@ int main()
                 cout << "Log Base 10: " << log10(input) << endl;
                 break;
             }
-            case 7: //Quadratic Equation Solver
+            case 8: //Quadratic Equation Solver
             {
+                cout << "\nQUADRATIC EQUATION SOLVER\n";
                 double a, b, c;
                 cout << "Please enter the quadratic equation in the form ax^2 + bx + c." << endl;
                 cout << "a: ";
@@ -135,12 +153,31 @@ int main()
                 input.printResults();
                 break;
             }
+            case 9:
+            {
+                cout << "\nAVERAGE CALCULATOR\n";
+                int numNumbers;
+                cout << "Please enter the number of numbers to find the average of: ";
+                cin >> numNumbers;
+                double sum = 0;
+                int i;
+                for(i = 0; i < numNumbers; i++)
+                {
+                    double temp;
+                    cout << "Please enter Number #" << (i + 1) << ": ";
+                    cin >> temp;
+                    sum += temp;
+                }
+                cout << "Average: " << (sum / numNumbers) << endl;
+                break;
+            }
             case 0: default:    //Exit
             {
                 return 0;
             }
             case -1:    //About
             {
+                cout << "\nABOUT:\n";
                 cout << version << endl;
                 cout << name << endl;
                 break;
@@ -164,8 +201,10 @@ void printMainMenu()
     cout << "3: Multiply 2 Numbers" << endl;
     cout << "4: Divide 2 Numbers" << endl;
     cout << "5: Square & Cube Roots" << endl;
-    cout << "6: Logarithms" << endl;
-    cout << "7: Quadratic Equation Solver" << endl;
+    cout << "6: Exponents" << endl;
+    cout << "7: Logarithms" << endl;
+    cout << "8: Quadratic Equation Solver" << endl;
+    cout << "9: Average Calculator" << endl;
     cout << "0: Exit" << endl;
     cout << "-1: About" << endl;
     cout << "-2: Disclaimer" << endl;
@@ -175,7 +214,7 @@ void printMainMenu()
 void printDisclaimer()
 {
     using namespace std;
-    cout << "DISCLIAMER:" << endl;
+    cout << "\nDISCLIAMER:" << endl;
     cout << "1. Neither Project IceForest Calculator C, nor the programmer(s) and/or developer(s) of Project IceForest Calculator C, nor the distributor(s) of Project IceForest Calculator C, nor anyone or anything else that is involved with Project IceForest Calculator C, are responsible for any misinformation, any inaccuracy, any problems, any harm, or any other negative consequences, whether physical or otherwise, caused by Project IceForest Calculator C or as a result of using Project IceForest Calculator C." << endl;
     cout << "2. Calculations and conversions made in Project IceForest Calculator C are not guaranteed to be accurate and/or exact." << endl;
 }
