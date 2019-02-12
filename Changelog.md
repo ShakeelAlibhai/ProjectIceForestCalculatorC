@@ -2,6 +2,9 @@
 ### Changelog
 
 ## Version 1.1.x
+### Version 1.1.1 (February 12, 2019)
+* Minor change in Exponents.
+
 ### Version 1.1 (January 21, 2019)
 * Added an average calculator.
 * Added the ability to calculate exponents.

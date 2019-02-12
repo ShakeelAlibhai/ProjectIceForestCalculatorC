@@ -51,8 +51,8 @@ class QuadraticEquation
 int main()
 {
     using namespace std;
-    string version("Project IceForest Calculator C 1.1");
-    string name("Version 1.1");
+    string version("Project IceForest Calculator C 1.1 Update 1");
+    string name("Version 1.1.1");
     cout << "\nWelcome to Project IceForest Calculator C!" << endl;
     int mainMenuChoice = 0; //Stores the user's choice of which option in the main menu to execute
     while(1)
@@ -119,7 +119,7 @@ int main()
             }
             case 6: //Exponents
             {
-                cout <<"\nLOGARITHMS\n";
+                cout <<"\nEXPONENTS\n";
                 double base, power;
                 cout << "Please enter the base: ";
                 cin >> base;
