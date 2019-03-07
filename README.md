@@ -11,6 +11,8 @@ command line and/or C++, or just as a fun and/or educational program.
 * Exponents
 * Log Base e and Log Base 10
 * Quadratic Equation Solver
+* Average Calculator
+* Pythagorean Triple Finder
 
 ## Disclaimer
 1. Neither Project IceForest Calculator C, nor the programmer(s) and/or developer(s) of Project IceForest Calculator C,

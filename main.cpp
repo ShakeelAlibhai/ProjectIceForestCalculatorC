@@ -1,10 +1,7 @@
 #include <iostream>
 #include <math.h>
 #include <string>
-
-//Function Prototypes
-void printMainMenu();
-void printDisclaimer();
+#include "main.h"
 
 class QuadraticEquation
 {
@@ -16,12 +13,20 @@ class QuadraticEquation
         double result2;
 
         //Solve the quadratic equation represented by a, b, and c; the results are stored in result1 and result2
-        void solve()
+        int solve()
         {
             result1 = (b * -1) + sqrt((b * b) - (4 * a * c));
             result1 /= (2 * a);
             result2 = (b * -1) - sqrt((b * b) - (4 * a * c));
             result2 /= (2 * a);
+            if(isnan(result1))
+            {
+                return 0;   //Indicates no real solutions can be found
+            }
+            else
+            {
+                return 1;   //Indicates at least one real solution was found
+            }
         }
     
     public:
@@ -36,14 +41,21 @@ class QuadraticEquation
         void printResults()
         {
             using namespace std;
-            solve();
-            if(result1 == result2)
+            int realSolutionExists = solve();
+            if(realSolutionExists == 1)
             {
-                cout << "The solution to the quadratic equation is " << result1 << "." << endl;
+                if(result1 == result2)
+                {
+                    cout << "The solution to the quadratic equation is " << result1 << "." << endl;
+                }
+                else
+                {
+                    cout << "The solutions to the quadratic equation are " << result1 << " and " << result2 << "." << endl;
+                }
             }
             else
             {
-                cout << "The solutions to the quadratic equation are " << result1 << " and " << result2 << "." << endl;
+                cout << "No real solutions to the quadratic equation were found." << endl;
             }
         }
 };
@@ -51,8 +63,8 @@ class QuadraticEquation
 int main()
 {
     using namespace std;
-    string version("Project IceForest Calculator C 1.1 Update 1");
-    string name("Version 1.1.1");
+    string version("Project IceForest Calculator C 1.2");
+    string name("Version 1.2");
     cout << "\nWelcome to Project IceForest Calculator C!" << endl;
     int mainMenuChoice = 0; //Stores the user's choice of which option in the main menu to execute
     while(1)
@@ -109,7 +121,7 @@ int main()
             }
             case 5: //Square & Cube Roots
             {
-                cout << "\nSQUARE & CUBE ROOTS\n";
+                cout << "\nSQUARE & CUBE ROOTS:\n";
                 double input;
                 cout << "Please enter the number: ";
                 cin >> input;
@@ -119,7 +131,7 @@ int main()
             }
             case 6: //Exponents
             {
-                cout <<"\nEXPONENTS\n";
+                cout <<"\nEXPONENTS:\n";
                 double base, power;
                 cout << "Please enter the base: ";
                 cin >> base;
@@ -130,7 +142,7 @@ int main()
             }
             case 7: //Logarithms
             {
-                cout << "\nLOGARITHMS\n";
+                cout << "\nLOGARITHMS:\n";
                 double input;
                 cout << "Please enter the number: ";
                 cin >> input;
@@ -140,7 +152,7 @@ int main()
             }
             case 8: //Quadratic Equation Solver
             {
-                cout << "\nQUADRATIC EQUATION SOLVER\n";
+                cout << "\nQUADRATIC EQUATION SOLVER:\n";
                 double a, b, c;
                 cout << "Please enter the quadratic equation in the form ax^2 + bx + c." << endl;
                 cout << "a: ";
@@ -153,9 +165,9 @@ int main()
                 input.printResults();
                 break;
             }
-            case 9:
+            case 9: //Average Calculator
             {
-                cout << "\nAVERAGE CALCULATOR\n";
+                cout << "\nAVERAGE CALCULATOR:\n";
                 int numNumbers;
                 cout << "Please enter the number of numbers to find the average of: ";
                 cin >> numNumbers;
@@ -169,6 +181,43 @@ int main()
                     sum += temp;
                 }
                 cout << "Average: " << (sum / numNumbers) << endl;
+                break;
+            }
+            case 10:    //Pythagorean Triple Finder
+            {
+                cout <<"\nPYTHAGOREAN TRIPLE FINDER:\n";
+                int num1, num2;
+                //Get the first number from the user and store it in num1
+                cout << "Please enter the first number: ";
+                cin >> num1;
+                //If the first number is less than 1, print a message and exit
+                if(num1 < 1)
+                {
+                    cout << "ERROR: The first number is less than 1!" << endl;
+                    break;
+                }
+                //Get the second number from the user and store it in num2
+                cout << "Please enter the second number: ";
+                cin >> num2;
+                //If the second number is less than 1, print a message and exit
+                if(num2 < 1)
+                {
+                    cout << "ERROR: The second number is less than 1!" << endl;
+                    break;
+                }
+                //If the second number is larger than the first number, then switch the first and second numbers
+                if(num2 > num1)
+                {
+                    int temp = num1;
+                    num1 = num2;
+                    num2 = temp;
+                }
+                //Calculate and print the Pythagorean Triple
+                int a, b, c;
+                a = (int)(pow(num1, 2) - pow(num2, 2));
+                b = 2 * num1 * num2;
+                c = (int)(pow(num1, 2) + pow(num2, 2));
+                cout << "The Pythaogrean Triple is: " << a << ", " << b << ", and " << c << endl;
                 break;
             }
             case 0: default:    //Exit
@@ -205,6 +254,7 @@ void printMainMenu()
     cout << "7: Logarithms" << endl;
     cout << "8: Quadratic Equation Solver" << endl;
     cout << "9: Average Calculator" << endl;
+    cout << "10: Pythagorean Triple Finder" << endl;
     cout << "0: Exit" << endl;
     cout << "-1: About" << endl;
     cout << "-2: Disclaimer" << endl;
